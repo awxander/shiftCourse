@@ -1,10 +1,10 @@
-package com.example.shifttest.db
+package com.example.shift.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.shifttest.db.dao.BinItemDao
+import com.example.shift.db.dao.BinItemDao
 
 
 @Database(entities = [BinItem::class], version = 1)

@@ -1,4 +1,4 @@
-package com.example.shifttest.data
+package com.example.shift.data
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

@@ -1,13 +1,13 @@
-package com.example.shifttest.adapter
+package com.example.shift.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shifttest.R
-import com.example.shifttest.databinding.BinItemBinding
-import com.example.shifttest.db.BinItem
+import com.example.shift.R
+import com.example.shift.databinding.BinItemBinding
+import com.example.shift.db.BinItem
 import kotlin.collections.ArrayList
 
 class BinAdapter : RecyclerView.Adapter<BinAdapter.BinHolder>() {

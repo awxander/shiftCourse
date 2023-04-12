@@ -1,7 +1,7 @@
-package com.example.shifttest.db.dao
+package com.example.shift.db.dao
 
 import androidx.room.*
-import com.example.shifttest.db.BinItem
+import com.example.shift.db.BinItem
 
 @Dao
 interface BinItemDao{

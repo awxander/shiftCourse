@@ -1,9 +1,9 @@
-package com.example.shifttest.presentation
+package com.example.shift.presentation
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.shifttest.TAG
-import com.example.shifttest.data.BinRepository
+import com.example.shift.TAG
+import com.example.shift.data.BinRepository
 import kotlinx.coroutines.launch
 
 class BinSearchViewModel(private val repository: BinRepository) : ViewModel() {

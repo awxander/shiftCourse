@@ -1,4 +1,4 @@
-package com.example.shifttest.data
+package com.example.shift.data
 
 import retrofit2.http.GET
 import retrofit2.http.Path

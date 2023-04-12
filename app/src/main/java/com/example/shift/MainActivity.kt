@@ -1,4 +1,4 @@
-package com.example.shifttest
+package com.example.shift
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,15 +11,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.shifttest.adapter.BinAdapter
-import com.example.shifttest.data.BinInfoModel
-import com.example.shifttest.data.BinRepository
-import com.example.shifttest.databinding.ActivityMainBinding
-import com.example.shifttest.db.BinItem
-import com.example.shifttest.db.BinItemDatabase
-import com.example.shifttest.domain.BinInfo
-import com.example.shifttest.presentation.BinSearchViewModel
-import com.example.shifttest.presentation.SearchState
+import com.example.shift.databinding.ActivityMainBinding
+import com.example.shift.adapter.BinAdapter
+import com.example.shift.data.BinInfoModel
+import com.example.shift.data.BinRepository
+import com.example.shift.db.BinItem
+import com.example.shift.db.BinItemDatabase
+import com.example.shift.domain.BinInfo
+import com.example.shift.presentation.BinSearchViewModel
+import com.example.shift.presentation.SearchState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat

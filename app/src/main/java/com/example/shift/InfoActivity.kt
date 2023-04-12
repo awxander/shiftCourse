@@ -1,12 +1,12 @@
-package com.example.shifttest
+package com.example.shift
 
 import android.content.Intent
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
-import com.example.shifttest.databinding.ActivityInfoBinding
-import com.example.shifttest.domain.BinInfo
+import com.example.shift.databinding.ActivityInfoBinding
+import com.example.shift.domain.BinInfo
 
 class InfoActivity : AppCompatActivity() {
 

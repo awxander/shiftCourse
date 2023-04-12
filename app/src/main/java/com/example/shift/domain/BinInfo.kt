@@ -1,7 +1,7 @@
-package com.example.shifttest.domain
+package com.example.shift.domain
 
 import android.os.Parcelable
-import com.example.shifttest.data.*
+import com.example.shift.data.*
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

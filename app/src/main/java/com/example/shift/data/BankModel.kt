@@ -1,4 +1,4 @@
-package com.example.shifttest.data
+package com.example.shift.data
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

@@ -1,6 +1,6 @@
-package com.example.shifttest.presentation
+package com.example.shift.presentation
 
-import com.example.shifttest.data.BinInfoModel
+import com.example.shift.data.BinInfoModel
 
 sealed interface SearchState{
 
