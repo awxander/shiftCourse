@@ -71,4 +71,14 @@ dependencies {
 
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$versions.junit")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$versions.junit")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$versions.junit")
+
+    testImplementation("org.mockito.kotlin:mockito-kotlin:$versions.mockito")
+    testImplementation("org.mockito:mockito-junit-jupiter:$versions.mockitoJupiter")
+
+    testImplementation("androidx.arch.core:core-testing:$versions.archCore")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.testCoroutines")
 }
