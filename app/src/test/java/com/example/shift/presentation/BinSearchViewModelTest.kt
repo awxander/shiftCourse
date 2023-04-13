@@ -14,7 +14,9 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.*
 import java.util.stream.Stream
@@ -31,11 +33,12 @@ class BinSearchViewModelTest {
 
     private companion object {
 
+
+
         @JvmStatic
         fun data(): Stream<Arguments> = Stream.of(
-            Arguments.arguments(3.0, 1.5, 2.0),
-            Arguments.arguments(0.0, 1.0, 0.0),
-            Arguments.arguments(1000.0, -1.0, -1000.0)
+            Arguments.arguments(555555L, SearchState.Content(BinInfoModel())),
+            Arguments.arguments(0, SearchState.Error("")),
         )
     }
 
@@ -76,7 +79,19 @@ class BinSearchViewModelTest {
 
     }
 
-    fun `WHEN load data EXPECT correct result`(binNum: Long) {
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @ParameterizedTest
+    @MethodSource("data")
+    fun `WHEN loaded data EXPECT correct result`(binNum: Long, expected: SearchState) = runTest {
+        if(binNum.toString().length in (6..16)){
+            val binInfo = BinInfoModel()
+            whenever(repository.getByNum(binNum)) doReturn binInfo
+        }else{
+            whenever(repository.getByNum(binNum)).thenThrow(Exception())
+        }
+        viewModel.loadData(binNum)
+        Assertions.assertEquals(expected::class.java, viewModel.state.value!!::class.java)
     }
 
 
