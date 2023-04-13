@@ -13,6 +13,7 @@ class BinSearchViewModel(private val repository: BinRepository) : ViewModel() {
 
     fun loadData(binNum: Long) {
         viewModelScope.launch {
+            _state.value = SearchState.Loading
             try {
                 val binInfoModel = repository.getByNum(binNum)
                 Log.i(javaClass.simpleName, "got bin info")
