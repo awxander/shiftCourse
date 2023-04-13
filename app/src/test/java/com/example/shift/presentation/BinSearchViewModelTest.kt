@@ -64,14 +64,13 @@ class BinSearchViewModelTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `bin loaded EXPECT content state`() = runBlocking {
+    fun `bin loaded EXPECT content state`() = runTest {
         val binNum = 555555L
         val binInfo = BinInfoModel()
         whenever(repository.getByNum(binNum)) doReturn binInfo
 
         viewModel.loadData(binNum)
         viewModel.state.observeForever(stateObserver)
-        val res = repository.getByNum(binNum)
 
         verify(stateObserver).onChanged(SearchState.Content(binInfo))
 
