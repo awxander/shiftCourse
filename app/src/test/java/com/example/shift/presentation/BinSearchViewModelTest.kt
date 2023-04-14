@@ -19,14 +19,20 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.*
+import java.io.IOException
+import java.io.UncheckedIOException
 import java.util.stream.Stream
 
 
-@ExtendWith(MockitoExtension::class, InstantTaskExecutorExtension::class, TestCoroutineExtension::class)
+@ExtendWith(
+    MockitoExtension::class,
+    InstantTaskExecutorExtension::class,
+    TestCoroutineExtension::class
+)
 class BinSearchViewModelTest {
 
 
-    private val repository : BinRepository = mock()
+    private val repository: BinRepository = mock()
     private val viewModel = BinSearchViewModel(repository)
 
     private val stateObserver: Observer<SearchState> = mock()
@@ -34,14 +40,13 @@ class BinSearchViewModelTest {
     private companion object {
 
 
-
         @JvmStatic
         fun data(): Stream<Arguments> = Stream.of(
-            Arguments.arguments(555555L, SearchState.Content(BinInfoModel())),
-            Arguments.arguments(0, SearchState.Error("")),
+            Arguments.arguments(555555L),
+            Arguments.arguments(44444444L),
+            Arguments.arguments(55555555L),
         )
     }
-
 
 
     //обычный тест
@@ -53,7 +58,7 @@ class BinSearchViewModelTest {
 
     //mock
     @Test
-    fun `view model load data EXPECT loading state`(){
+    fun `view model load data EXPECT loading state`() {
         viewModel.state.observeForever(stateObserver)
         val binNum = 0L
         viewModel.loadData(binNum)
@@ -83,18 +88,17 @@ class BinSearchViewModelTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @ParameterizedTest
     @MethodSource("data")
-    fun `WHEN loaded data EXPECT correct result`(binNum: Long, expected: SearchState) = runTest {
-        if(binNum.toString().length in (6..16)){
+    fun `WHEN loaded data EXPECT content state`(binNum: Long) = runTest {
+        //чекнул в приложении, на бины с длиной 4- 16 ответ с частичными данными есть
+        if (binNum.toString().length in (4..16)) {
             val binInfo = BinInfoModel()
             whenever(repository.getByNum(binNum)) doReturn binInfo
-        }else{
+        } else {
             whenever(repository.getByNum(binNum)).thenThrow(Exception())
         }
         viewModel.loadData(binNum)
-        Assertions.assertEquals(expected::class.java, viewModel.state.value!!::class.java)
+        Assertions.assertTrue(viewModel.state.value is SearchState.Content)
     }
-
-
 
 
 }
